@@ -106,3 +106,7 @@ venv.bak/
 # OS stuff:
 .DS_Store
 .idea
+
+#custom_template_not_upload
+data/
+__trash__/
