@@ -110,3 +110,4 @@ venv.bak/
 #custom_template_not_upload
 data/
 __trash__/
+config.ini
