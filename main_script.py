@@ -36,7 +36,7 @@ def main(args):
     # getting data
     data_skills = mac.get_skills()
     # analizing data
-    data_skills_by_education = man.get_skills_by_education(data_skills,args.country)
+    data_skills_by_education = man.get_skills_by_education(data_skills)
     # saving csv
     locationcsv.append(mre.save_csv(data_skills_by_education, 'Skills'+args.country))
 
