@@ -5,11 +5,11 @@ This repository is related to the pipeline project performed at IRONHACK Data An
 
 ![Image](https://images.unsplash.com/photo-1527474305487-b87b222841cc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1867&q=80)
 ## Challenge 1
-The aim of the project is to analyzed how gender is reprensented in data jobs. For this project, we will analyze the percentage of male and female by country and job, in order to know more about the percentage which represent each job.
+The aim of the project is to analyzed how gender is reprensented in data jobs per country. For this project, we will analyze the percentage of male and female by country and job, in order to know more about the percentage which represent each job.
 
 ## Bonus 1
 
-For the Bonus 1, we will analyzed how intention of vote about a data poll. For this poll, we have analyzed the intention of vote in order to know who is for or againts the question provided. 
+For the Bonus 1, we will analyzed the intention of vote based on a poll. For this poll, we have analyzed the intention of vote in order to know who is for or againts the question provided. 
 
 ## Bonus 2
 

@@ -38,7 +38,7 @@ def main(args):
     # analizing data
     data_skills_by_education = man.get_skills_by_education(data_skills)
     # saving csv
-    locationcsv.append(mre.save_csv(data_skills_by_education, 'Skills'+args.country))
+    locationcsv.append(mre.save_csv(data_skills_by_education, 'Skills'))
 
     # sending email with attached reports
     mre.send_email(locationcsv)

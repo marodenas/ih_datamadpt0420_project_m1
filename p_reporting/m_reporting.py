@@ -55,13 +55,12 @@ def send_email(location):
             part = MIMEBase('application', 'octet-stream')
             part.set_payload(open(file, 'rb').read())
             encoders.encode_base64(part)
-            part.add_header('Content-Disposition', 'attachment; filename="%s"' % file)
+            part.add_header('Content-Disposition', 'attachment; filename="%s"' % file[13:])
             message.attach(part)
 
         session = smtplib.SMTP('smtp.gmail.com', 587)  # use gmail with port
         # session.starttls()  # enable security
 
-        # session = smtplib.SMTP_SSL('smtp.gmail.com:587')
         session.ehlo()
         session.starttls()
         session.login(sender_address, sender_pass)  # login with mail_id and password
