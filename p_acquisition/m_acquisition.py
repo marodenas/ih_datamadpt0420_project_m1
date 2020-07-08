@@ -57,7 +57,8 @@ def get_normalized_job_title(df):
     print('Getting Job Title from Api...')
     jobs = df['Job Title'].unique()
     unique_jobs = {x: get_job_title(x) for x in jobs}
-    df['Job Title'] = df['Job Title'].apply(lambda x: unique_jobs[x] if x != 'Unknown' else x)
+    # df['Job Title'] = df['Job Title'].apply(lambda x: unique_jobs[x] if x != 'Unknown' else x)
+    df['Job Title'] = df['Job Title'].map(unique_jobs)
     return df
 
 
@@ -79,7 +80,7 @@ def get_poll_info():
     return data
 
 
-def get_skills():
+def get_skills(country=None):
     print('Getting Skillss...')
     cfg = configparser.RawConfigParser()
     cfg.read('config.ini')
@@ -91,6 +92,5 @@ def get_skills():
                                 FROM career_info \
                                 JOIN country_info on career_info.uuid = country_info.uuid", engine)
     data = get_country_name(df_sql)
-    df = mwr.clean_skills(data)
-
+    df = mwr.clean_skills(data,country)
     return df

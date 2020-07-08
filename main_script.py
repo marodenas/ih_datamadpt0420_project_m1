@@ -30,15 +30,15 @@ def main(args):
     # analizing data
     data_b1 = man.get_poll_resume(data_poll, args.country)
     # saving csv
-    locationcsv.append(mre.save_csv(data_b1, 'Poll-'+args.country))
+    locationcsv.append(mre.save_csv(data_b1, f'Poll{args.country}'))
 
     ##Bonus 2 -
     # getting data
-    data_skills = mac.get_skills()
+    data_skills = mac.get_skills(args.country)
     # analizing data
     data_skills_by_education = man.get_skills_by_education(data_skills)
     # saving csv
-    locationcsv.append(mre.save_csv(data_skills_by_education, 'Skills'))
+    locationcsv.append(mre.save_csv(data_skills_by_education, f'Skills{args.country}'))
 
     # sending email with attached reports
     mre.send_email(locationcsv)

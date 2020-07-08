@@ -57,5 +57,5 @@ def get_skills_names(x):
 def get_skills_by_education(df):
     df['Skills'] = df['Job Code'].apply(get_skills_names)
     df_skills = pd.DataFrame(df['Skills'].values.tolist(), columns=['Skill-' + str(x) for x in range(1, 11)])
-    final = pd.concat([df['Education Level'].reset_index(drop=True), df_skills.reset_index(drop=True)], axis=1)
+    final = pd.concat([df[['Country','Education Level']].reset_index(drop=True), df_skills.reset_index(drop=True)], axis=1)
     return final

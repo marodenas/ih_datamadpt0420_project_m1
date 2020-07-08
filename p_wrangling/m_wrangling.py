@@ -4,7 +4,8 @@ import pandas as pd
 # wrangling functions
 
 def get_country_name(df, cc):
-    df['Country'] = df['Country'].apply(lambda x: cc[x])
+    # df['Country'] = df['Country'].apply(lambda x: cc[x])
+    df['Country'] = df['Country'].map(cc)
     return df
 
 
@@ -21,15 +22,26 @@ def normalize_age(x):
         return int(x)
 
 
-def clean_skills(df):
+def clean_skills(df,country=None):
     # drop null education
     df_sk = df.dropna(subset=['Education Level'])
     # most repeated job
-    df_sk = df_sk.groupby(['Education Level', 'Job Code']).size().reset_index()
-    df_new = pd.DataFrame(df_sk)
-    idx = df_new.groupby(['Education Level'])[0].transform(max) == df_new[0]
-    df_new = df_new[idx]
-    return df_new
+    if not country:
+        country = "All"
+        # most repeated job
+        df_sk = df_sk.groupby(['Job Code','Education Level']).size()
+        df_new = pd.DataFrame(df_sk).reset_index()
+        idx = df_new.groupby(['Education Level'])[0].transform(max) == df_new[0]
+        df_new = df_new[idx]
+        return df_new
+    else:
+        #most repeated job per education level
+        df_sk = df_sk.groupby(['Country','Job Code','Education Level']).size()
+        df_new = pd.DataFrame(df_sk).reset_index()
+        df_new = df_new[df_new['Country']==country]
+        df_new = df_new.groupby(['Education Level','Country','Job Code'])[0].max().sort_values(ascending=False).reset_index()
+        df_new = df_new.groupby(['Country','Education Level']).head(1)
+        return df_new
 
 
 def csv_to_html(x):

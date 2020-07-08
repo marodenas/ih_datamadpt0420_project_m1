@@ -4,8 +4,11 @@ This repository is related to the pipeline project performed at IRONHACK Data An
 
 
 ![Image](https://images.unsplash.com/photo-1527474305487-b87b222841cc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1867&q=80)
+
+
 ## Challenge 1
-The aim of the project is to analyzed how gender is reprensented in data jobs per country. For this project, we will analyze the percentage of male and female by country and job, in order to know more about the percentage which represent each job.
+
+The aim of the project is to analyzed how gender is reprensented in data jobs per country. For this project, we will analyze the percentage of male and female by country and job, in order to know more about the percentage which represent each job. For this challenge you will need the following libraries:
 
 ## Bonus 1
 
@@ -23,11 +26,38 @@ For the Bonus 2, we have analyzed the main skills of the related job that were a
 Please, install all the libraries in requirements.txt before run the script.
 Furthemore, there is a config.ini file where you have to specify all parameters that you need for run the script. Please, fill out all the variables in order to run the script. You will need the database, api url, and webscraping url. 
 
+The following python libraries are requested:
+
+- Python
+- pandas
+- request
+- sqlalchemy
+- beautifulsoup4
+- configparser
+- pysftp
+
 In order to send an email and upload the outcome csv, you will need to provide the mail, reciever, pass, sftp and sftp password. 
 Don't worry about privacity, this file doesn't be uploaded to github.
 
 
 ### How to use the pipeline
+First things first, you will need to set up the config.ini file in order to run the script. Here is an example of the variables that you have to set up: 
+```
+[email]
+user = your user email
+password = your password email
+receiver = person who recieved the email
+
+[data]
+db = database path
+url = url for scrapping country codes
+
+[website]
+myHostname = xxxxxxx
+myUsername = xxxxxxx
+myPassword = xxxxxxx 
+```
+
 Pipeline is launched through main_script.py giving as paramenters:
 - `-c / --country` - an European country.
 
@@ -44,7 +74,7 @@ Example:
 
 
 ### :file_folder: **Folder structure**
-```
+
 └── ih_datamadpt0420_project_m1
     ├── __trash__
     ├── .gitignore
@@ -71,7 +101,6 @@ Example:
     └── data
         ├── html
         ├── raw
-        ├── processed
         └── results
 ```
 
@@ -98,11 +127,10 @@ Example:
 #### **Reporting**
 With the previous analysis we will provided with the next reports: 
 - CSV of each report that will be find in data/results folder
-- An email with te csv attached. 
+- An email with the csv attached. 
 - The table will be able to consult on the website provided.
 
   
 ---
 ### ** Next stages**
-- Skills by country.
-- More plots related to the analysis done.
+- Improve api connection
